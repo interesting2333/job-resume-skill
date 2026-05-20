@@ -1,0 +1,4 @@
+interface:
+  display_name: "Job Resume Skill"
+  short_description: "创建、优化简历并准备面试追问"
+  default_prompt: "Use $job-resume-skill to optimize my resume for a target JD and prepare interview follow-up questions."
