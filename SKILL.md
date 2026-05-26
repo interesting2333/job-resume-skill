@@ -24,11 +24,16 @@ description: 面向求职者的简历创建、修改、完善、项目关键点�
 - 解析 Word 简历：读取 `references/word-parsing.md`，优先用 `scripts/extract_word_text.py` 提取 `.docx/.docm` 正文、表格和批注文本。
 - 总结项目关键点：读取 `references/project-keypoints.md`；如果用户给的是工程目录，先用 `scripts/project_inventory.py` 做目录盘点，再按简历/面试视角提炼。
 - 修改或优化简历：读取 `references/resume-audit-and-rewrite.md`，先审计，再给改写稿。
-- 根据 JD 定制：读取 `references/jd-tailoring.md`，对齐 JD 的职责、技能、关键词和隐藏考察点。
+- 根据 JD 定制：读取 `references/jd-tailoring.md`；需要专业匹配度判断时再读 `references/jd-scorecard.md`，对齐 JD 的职责、技能、关键词、隐藏考察点和证据链。
 - 信息不足需要提问：读取 `references/intake-and-materials.md`，用高质量追问挖出事实，不要泛泛问“还有吗”。
-- 面试对抗或讲稿准备：读取 `references/interview-defense.md`，围绕简历生成追问题、答法和防守策略。
+- 面试对抗或讲稿准备：读取 `references/interview-defense.md`；需要评分标准、结构化追问或模拟面试点评时再读 `references/interview-rubrics.md`。
 - 红旗处理：读取 `references/red-flags-and-ethics.md`，处理空窗期、跳槽、外包、玩具项目、夸大风险。
 - 一页版简历：读取 `references/one-page-resume.md`，只在用户明确需要或确认后生成。
+- 岗位画像或职级判断：读取 `references/occupation-taxonomy.md`，判断目标岗位、职级证据、叙事重心和能力模型。
+- 招聘方视角压力测试：读取 `references/recruiter-lens.md`，从 HR、面试官和 ATS 角度检查筛选风险。
+- 指标和结果补强：读取 `references/metrics-library.md`，选择适合岗位的量化指标，缺数据时标注口径或待补。
+- 国内外版本、本地化或英文简历：读取 `references/market-localization.md`，按目标市场调整格式、隐私信息和表达方式。
+- 需要权威来源、市场趋势、薪资或最新岗位信息：读取 `references/knowledge-sources.md`，按可信度选择信息源；必要时联网确认。
 
 ## 默认工作流
 
@@ -38,6 +43,7 @@ description: 面向求职者的简历创建、修改、完善、项目关键点�
    - 当前材料：简历、项目说明、过往经历、求职偏好
    - 产出范围：整份简历、局部模块、项目经历、自我介绍、面试准备
    - 如果输入是工程项目，先确认工程路径、目标岗位和希望突出技术深度还是业务价值
+   - 如果涉及国内/海外投递、英文简历、薪资或市场趋势，先确认目标市场和信息时效要求
 
 2. 做 30 秒初判：
    - 这份材料最可能让招聘方继续看的点是什么
@@ -47,6 +53,7 @@ description: 面向求职者的简历创建、修改、完善、项目关键点�
 3. 审计或搭建素材：
    - 对现有简历，检查故事线、关键词、项目上下文、量化结果、真实性风险。
    - 对空白简历，先问出基础档案、工作经历、项目素材和成果证据。
+   - 对关键能力，尽量建立“关键词 -> 项目场景 -> 个人动作 -> 产物 -> 结果 -> 可防守证据”的证据链。
 
 4. 生成策略：
    - 说明该保留、删除、弱化、前置或重写什么。
@@ -77,6 +84,7 @@ description: 面向求职者的简历创建、修改、完善、项目关键点�
 - 不输出平台安装说明、泛泛鸡汤、与简历/求职无关的人格模仿内容。
 - 用户提供 Word 文件时，先解析文件内容，再进入审计、改写或面试对抗流程。不要只凭文件名推断内容。
 - 用户提供工程、提示或项目描述时，先提炼项目关键点，再决定是否转成简历 bullet、项目讲稿或面试防守题。
+- 涉及岗位标准、薪资、市场趋势、最新招聘规则或外部平台数据时，优先使用 `references/knowledge-sources.md` 的来源路由；社区和众包数据必须提示样本局限。
 
 ## 常用输出结构
 
@@ -162,3 +170,10 @@ JD 定制：
 - `references/interview-defense.md`: 面试对抗、项目讲稿、追问、好答案/差答案、HR 和谈薪。
 - `references/red-flags-and-ethics.md`: 外包、空窗、跳槽、玩具项目、夸大风险和真实性边界。
 - `references/one-page-resume.md`: 一页版简历压缩规则。
+- `references/knowledge-sources.md`: 内置信息源、可信度分层、联网检索和引用规则。
+- `references/occupation-taxonomy.md`: 岗位画像、职级判断、能力模型和不同岗位叙事重心。
+- `references/jd-scorecard.md`: JD 匹配评分卡、证据链、匹配等级和风险判断。
+- `references/recruiter-lens.md`: HR、面试官和 ATS 视角的简历压力测试。
+- `references/interview-rubrics.md`: 结构化面试评分、追问链、STAR/BEI 点评标准。
+- `references/metrics-library.md`: 技术、产品、运营、数据、管理岗位的量化指标库。
+- `references/market-localization.md`: 国内外简历差异、中英文简历和目标市场本地化规则。
