@@ -1,81 +1,88 @@
 # Job Resume Skill
 
-面向求职者的简历与面试准备 Skill。它用于创建、诊断、改写和定制简历，也可以根据项目代码、项目描述或目标 JD 提炼项目亮点、简历 bullet、面试追问点和回答策略。
+An OpenCode skill for resume writing, resume review, JD-based tailoring, project highlight extraction, and interview preparation.
 
-这个 Skill 的目标不是把经历包装得夸张，而是让简历更容易获得面试、更能匹配岗位，并且经得起真实追问。
+This skill helps job seekers turn real experience into a stronger, more defensible resume. It does not fabricate achievements, metrics, titles, project scale, or responsibilities.
 
-## 能做什么
+## Overview
 
-- 从零创建简历：通过提问建立候选人素材库，生成简历草稿。
-- 优化现有简历：审计故事线、关键词、项目上下文、量化结果和风险点。
-- 根据 JD 定制简历：拆解岗位要求，调整内容顺序、项目叙事和关键词。
-- 提炼项目关键点：从工程目录、项目说明或提示中总结项目定位、技术亮点、业务价值和可写进简历的成果。
-- 准备面试对抗：生成项目讲稿、常见追问、好答案/差答案对比和补材料清单。
-- 解析 Word 简历：支持 `.docx` / `.docm` 文本提取；旧 `.doc` 建议先转存为 `.docx`。
-- 处理求职红旗：例如空窗期、跳槽、外包经历、玩具项目、指标缺失和经历真实性边界。
+`job-resume-skill` acts as a resume coach and interview-defense coach. It can create a resume from scratch, improve an existing resume, tailor materials for a target job description, extract resume-worthy project points from code or project notes, and prepare answers for likely interview follow-up questions.
 
-## 适用场景
+## Use Cases
 
-你可以在这些请求中使用它：
+Use this skill when you need to:
 
-- “帮我写一份后端开发简历”
-- “帮我优化这份简历”
-- “根据这个 JD 改简历”
-- “帮我总结这个项目的简历亮点”
-- “从这个工程里提炼项目关键点”
-- “帮我准备简历里的面试追问”
-- “帮我把项目经历改成更像简历 bullet”
-- “帮我做一页版简历”
+- Write a resume from scratch.
+- Review and rewrite an existing resume.
+- Tailor a resume to a specific JD.
+- Extract project highlights from a codebase, project description, or technical notes.
+- Convert project experience into resume bullets.
+- Prepare project scripts, self-introductions, interview Q&A, and follow-up defenses.
+- Build a one-page resume.
+- Handle resume red flags such as career gaps, frequent job changes, outsourcing experience, toy projects, weak metrics, or authenticity risks.
+- Parse Word resumes in `.docx` or `.docm` format.
 
-## 使用方式
+## How To Use
 
-在 Codex 中直接点名 Skill：
+Call the skill directly in OpenCode:
 
 ```text
 Use $job-resume-skill to optimize my resume for this JD.
 ```
 
-也可以用中文自然描述需求：
+You can also describe the task naturally:
+
+```text
+Use job-resume-skill to tailor my resume for the JD below and list likely interview follow-up questions.
+```
+
+Chinese requests are supported:
 
 ```text
 使用 job-resume-skill，帮我根据下面 JD 优化简历，并列出面试官可能追问的问题。
 ```
 
-为了得到更好的结果，建议提供以下材料中的一部分：
+## Recommended Inputs
 
-- 目标岗位或 JD
-- 当前简历文本或 Word 简历
-- 项目说明、项目代码目录或关键技术点
-- 候选人的年限、方向、目标城市/市场
-- 希望产出的内容，例如整份简历、项目经历、自我介绍、面试问答或一页版简历
+For better results, provide any of the following:
 
-## 工作原则
+- Target role or job description.
+- Current resume text or Word resume.
+- Project description, code directory, or key technical notes.
+- Candidate background, years of experience, career direction, target city, or target market.
+- Desired output, such as a full resume, project experience section, self-introduction, interview Q&A, or one-page resume.
 
-- 不编造经历、指标、头衔、项目规模或职责边界。
-- 缺失事实会用 `[待补充：...]` 标出，或先提出问题。
-- 简历内容优先表达“动作 + 产物 + 结果”。
-- 项目经历必须包含上下文：系统做什么、服务谁、解决什么问题。
-- 面试准备会围绕真实追问展开，包括做法、取舍、结果证明和个人贡献。
+## Core Principles
 
-## 辅助脚本
+- Do not invent experience, metrics, titles, project scale, or responsibility boundaries.
+- Mark missing facts with `[待补充：...]` or ask focused follow-up questions.
+- Prefer resume bullets built around action, deliverable, and result.
+- Always include project context: what the system does, who it serves, and what problem it solves.
+- Prepare for real interview pressure: implementation details, trade-offs, evidence of impact, and personal contribution.
 
-### 提取 Word 简历文本
+## Image Input Limitation
+
+ERROR: Cannot read "image.png" (this model does not support image input). Please provide the image content as text, or describe the target format in words.
+
+## Helper Scripts
+
+### Extract Text From Word Resumes
 
 ```bash
 python scripts/extract_word_text.py path/to/resume.docx
 ```
 
-支持 `.docx` 和 `.docm`，会尽量提取正文、表格、页眉页脚、脚注、尾注和批注中的文本。
+Supports `.docx` and `.docm`. The script attempts to extract text from body content, tables, headers, footers, footnotes, endnotes, and comments.
 
-### 盘点工程目录
+### Inspect A Project Directory
 
 ```bash
 python scripts/project_inventory.py path/to/project
 ```
 
-用于在分析工程项目之前快速了解项目语言、目录结构、重要文件和建议阅读入口。
+Use this before analyzing a codebase for resume-worthy project highlights. It summarizes languages, directory structure, important files, and suggested reading entry points.
 
-## 目录结构
+## Directory Structure
 
 ```text
 .
@@ -94,10 +101,10 @@ python scripts/project_inventory.py path/to/project
     └── project_inventory.py
 ```
 
-## 参考资料
+## References
 
-`references/` 目录包含不同任务的操作指南，包括简历审计、JD 定制、项目关键点、面试对抗、红旗处理、岗位画像、量化指标库和国内外简历本地化规则。
+The `references/` directory contains task-specific guides for intake, resume audit, JD tailoring, project highlight extraction, interview defense, red-flag handling, job taxonomy, metric selection, recruiter review, and market localization.
 
 ## License
 
-未声明许可证。使用、分发或改动前请先确认仓库所有者的授权要求。
+No license has been declared. Confirm authorization requirements with the repository owner before using, distributing, or modifying this project.
